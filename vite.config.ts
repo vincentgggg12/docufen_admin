@@ -61,7 +61,7 @@ export default defineConfig(({ mode }) => {
     },
       ...(!isProd && {
       server: {
-        port: 3030,
+        port: 3070,
         https: {
           key: fs.readFileSync(path.join(certDir, 'localhost.key')),
           cert: fs.readFileSync(path.join(certDir, 'localhost.crt'))
@@ -75,8 +75,8 @@ export default defineConfig(({ mode }) => {
     // Add HTTPS configuration for the preview server
     ...(local && {
       preview: {
-        port: 3030,
-        strictPort: true, // This will fail if port 3030 is already in use
+        port: 3070,
+        strictPort: true, // This will fail if port 3070 is already in use
         https: {
           key: fs.readFileSync(path.join(certDir, 'localhost.key')),
           cert: fs.readFileSync(path.join(certDir, 'localhost.crt'))

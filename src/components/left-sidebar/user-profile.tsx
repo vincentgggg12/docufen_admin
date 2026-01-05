@@ -1,12 +1,13 @@
 import React, { useState } from "react"
-import { LogOut, ChevronsUpDown, HelpCircle, Ticket } from "lucide-react"
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
+import { LogOut, ChevronsUpDown, HelpCircle, Ticket, Moon, Sun } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator
+  DropdownMenuSeparator,
 } from "../ui/dropdown-menu"
+import { Switch } from "../ui/switch"
 import { 
   SidebarGroup, 
   SidebarGroupContent, 
@@ -21,12 +22,14 @@ import DocufenIcon from "@/assets/docufen_icon_v4.svg"
 import DocufenLogo from "@/assets/docufen_logo_v4.svg"
 import { useTranslation } from "react-i18next"
 import { SupportModal } from "../support/SupportModal"
+import { useTheme } from "@/components/theme-provider"
 
 export function UserProfile({ ...props }: React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
-  const { user, initials, legalName, logout } = useUserStore(useShallow((state) => ({ 
+  const { user, initials, legalName, logout } = useUserStore(useShallow((state) => ({
     initials: state.initials, user: state.user, legalName: state.legalName, logout: state.logout
   })))
   const { t } = useTranslation()
+  const { theme, setTheme } = useTheme()
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false)
 
   if (!user) return null
@@ -68,7 +71,7 @@ export function UserProfile({ ...props }: React.ComponentPropsWithoutRef<typeof 
                   <HelpCircle className="h-4 w-4" />
                   <span>{t('help')}</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem 
+                <DropdownMenuItem
                   data-testid="lsb.user-profile.supportMenuItem"
                   className="flex gap-2 py-2"
                   onClick={() => setIsSupportModalOpen(true)}
@@ -76,12 +79,12 @@ export function UserProfile({ ...props }: React.ComponentPropsWithoutRef<typeof 
                   <Ticket className="h-4 w-4" />
                   <span>{t('support.title', 'Support')}</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem 
+                <DropdownMenuItem
                   data-testid="lsb.user-profile.logoutMenuItem"
-                  className="flex gap-2 py-2" 
-                  onClick={async () => { 
-                    await logout(); 
-                    // navigate('/login'); 
+                  className="flex gap-2 py-2"
+                  onClick={async () => {
+                    await logout();
+                    // navigate('/login');
                   }}
                 >
                   <LogOut className="h-4 w-4" />
@@ -92,10 +95,23 @@ export function UserProfile({ ...props }: React.ComponentPropsWithoutRef<typeof 
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroupContent>
-      
-      <SupportModal 
-        isOpen={isSupportModalOpen} 
-        onClose={() => setIsSupportModalOpen(false)} 
+
+      <div className="px-4 py-2 border-t">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            {theme === 'dark' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            <span className="text-sm">Dark Mode</span>
+          </div>
+          <Switch
+            checked={theme === 'dark'}
+            onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
+          />
+        </div>
+      </div>
+
+      <SupportModal
+        isOpen={isSupportModalOpen}
+        onClose={() => setIsSupportModalOpen(false)}
       />
     </SidebarGroup>
   )

@@ -16,7 +16,9 @@ import { useTranslation } from 'react-i18next'
 import { DebugToggle } from './components/DebugToggle'
 import { ActivityMonitorProvider } from './components/ActivityMonitorProvider'
 import InternalAdmin from './pages/InternalAdmin/InternalAdmin'
+import MetricsPage from './pages/Metrics/MetricsPage'
 import { AnalyticsProvider } from './contexts/AnalyticsContext'
+import { ThemeProvider } from './components/theme-provider'
 
 interface AuthAppProps {
   autoLogin?: boolean
@@ -86,16 +88,17 @@ function App() {
   useAccountData()
 
   return (
-    <ActivityMonitorProvider>
-      <SidebarProvider
-        open={sidebarOpen}
-        onOpenChange={setSidebarOpen}
-        defaultOpen={true}
-      >
-        <BrowserRouter>
-          <AnalyticsProvider>
-            <DebugModeHandler />
-            <Routes>
+    <ThemeProvider defaultTheme="dark" storageKey="docufen-admin-theme">
+      <ActivityMonitorProvider>
+        <SidebarProvider
+          open={sidebarOpen}
+          onOpenChange={setSidebarOpen}
+          defaultOpen={true}
+        >
+          <BrowserRouter>
+            <AnalyticsProvider>
+              <DebugModeHandler />
+              <Routes>
             {/* Root redirects to admin */}
             <Route
               path="/"
@@ -113,6 +116,14 @@ function App() {
               path="/admin"
               element={
                 <RequireAuth><InternalAdmin /></RequireAuth>
+              }
+            />
+
+            {/* Metrics page */}
+            <Route
+              path="/metrics"
+              element={
+                <RequireAuth><MetricsPage /></RequireAuth>
               }
             />
 
@@ -137,12 +148,13 @@ function App() {
             {/* Redirect any unknown routes to admin */}
             <Route path="*" element={<Navigate to="/admin" />} />
           </Routes>
-          </AnalyticsProvider>
-        </BrowserRouter>
-        <Toaster />
-        <DebugToggle />
-      </SidebarProvider>
-    </ActivityMonitorProvider>
+            </AnalyticsProvider>
+          </BrowserRouter>
+          <Toaster />
+          <DebugToggle />
+        </SidebarProvider>
+      </ActivityMonitorProvider>
+    </ThemeProvider>
   )
 }
 

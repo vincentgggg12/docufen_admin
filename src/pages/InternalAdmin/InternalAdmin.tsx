@@ -13,6 +13,8 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { SidebarLeft } from "@/components/left-sidebar/sidebar-left";
+import { SidebarInset } from "@/components/ui/sidebar";
 
 interface Tenant {
   id: string;
@@ -291,8 +293,11 @@ const InternalAdmin: React.FC = () => {
     return null;
   }
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6" data-testid="internalAdmin.pageTitle">Integrity Codes Pty Ltd Administration</h1>
+    <>
+      <SidebarLeft />
+      <SidebarInset style={{ border: 'none' }}>
+        <div className="container mx-auto p-6">
+          <h1 className="text-3xl font-bold mb-6" data-testid="internalAdmin.pageTitle">Integrity Codes Pty Ltd Administration</h1>
       
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">
@@ -606,7 +611,9 @@ const InternalAdmin: React.FC = () => {
           </div>
         </>
       )}
-    </div>
+        </div>
+      </SidebarInset>
+    </>
   );
 };
 

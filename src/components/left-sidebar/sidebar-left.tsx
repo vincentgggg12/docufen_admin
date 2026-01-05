@@ -3,6 +3,7 @@ import * as React from "react"
 import {
   MessageCircleQuestion,
   Settings,
+  ChartSpline,
   LucideProps,
 } from "lucide-react"
 import { NavMain } from "./nav-main"
@@ -55,6 +56,8 @@ export function SidebarLeft({
     const path = location.pathname;
     if (path.includes('/admin')) {
       setActiveMenuItem('Admin Dashboard');
+    } else if (path.includes('/metrics')) {
+      setActiveMenuItem('Metrics');
     } else {
       setActiveMenuItem(null);
     }
@@ -70,13 +73,22 @@ export function SidebarLeft({
     if (user == null || userType == null) return
     const navMain: NavigationItem[] = []
 
-    // Only show Admin Dashboard
+    // Admin Dashboard
     navMain.push({
       title: 'Admin Dashboard',
       url: "/admin",
       icon: Settings,
       isActive: activeMenuItem === 'Admin Dashboard',
       onClick: () => handleMenuItemClick('Admin Dashboard')
+    })
+
+    // Metrics
+    navMain.push({
+      title: 'Metrics',
+      url: "/metrics",
+      icon: ChartSpline,
+      isActive: activeMenuItem === 'Metrics',
+      onClick: () => handleMenuItemClick('Metrics')
     })
 
     setNavList({
