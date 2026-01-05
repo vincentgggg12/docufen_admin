@@ -1,0 +1,39 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "userDataDir": "./playwright/output/user-data-dir",
+    "launchOptions": {
+      "headless": false,
+      "channel": "chrome"
+    },
+    "contextOptions": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "recordVideo": {
+        "dir": "./playwright/output/videos"
+      }
+    }
+  },
+  "server": {
+    "port": 3333,
+    "host": "localhost"
+  },
+  "capabilities": [
+    "core",
+    "tabs",
+    "pdf",
+    "history",
+    "wait",
+    "files",
+    "install"
+  ],
+  "vision": true,
+  "outputDir": "./playwright/output",
+  "network": {
+    "allowedOrigins": ["*"],
+    "blockedOrigins": []
+  },
+  "noImageResponses": false
+} 

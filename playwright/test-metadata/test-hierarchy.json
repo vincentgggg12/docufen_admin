@@ -1,0 +1,127 @@
+{
+  "$schema": "./schema/hierarchy.schema.json",
+  "title": "Test Execution Report",
+  "sections": [
+    {
+      "id": "1",
+      "name": "Login & Authentication",
+      "expanded": false,
+      "subsections": []
+    },
+    {
+      "id": "2", 
+      "name": "Setup Wizard",
+      "expanded": false,
+      "subsections": []
+    },
+    {
+      "id": "3",
+      "name": "Account",
+      "expanded": false,
+      "subsections": []
+    },
+    {
+      "id": "4",
+      "name": "Users", 
+      "expanded": false,
+      "subsections": []
+    },
+    {
+      "id": "5",
+      "name": "Documents",
+      "expanded": false,
+      "subsections": []
+    },
+    {
+      "id": "6",
+      "name": "Analytics",
+      "expanded": false,
+      "subsections": []
+    },
+    {
+      "id": "7",
+      "name": "Document Completion",
+      "expanded": true,
+      "subsections": [
+        {
+          "id": "7.1",
+          "name": "Create New Document",
+          "configFile": "7-document-completion/7.1-create-new-document.json",
+          "expanded": true
+        },
+        {
+          "id": "7.2",
+          "name": "Create Practice Document",
+          "configFile": "7-document-completion/7.2-create-practice-document.json",
+          "expanded": false
+        },
+        {
+          "id": "7.3",
+          "name": "Create Controlled Copy",
+          "configFile": "7-document-completion/7.3-create-controlled-copy.json",
+          "expanded": false
+        },
+        {
+          "id": "7.4",
+          "name": "Workflow and Document Access",
+          "configFile": "7-document-completion/7.4-workflow-access.json",
+          "expanded": false
+        },
+        {
+          "id": "7.5",
+          "name": "Delete and Void",
+          "configFile": "7-document-completion/7.5-delete-void.json",
+          "expanded": false
+        },
+        {
+          "id": "7.6",
+          "name": "Stage Management",
+          "configFile": "7-document-completion/7.6-stage-management.json",
+          "expanded": false
+        },
+        {
+          "id": "7.7",
+          "name": "Pre-Approval",
+          "configFile": "7-document-completion/7.7-pre-approval.json",
+          "expanded": false
+        },
+        {
+          "id": "7.8",
+          "name": "Execution",
+          "configFile": "7-document-completion/7.8-execution.json",
+          "expanded": false
+        },
+        {
+          "id": "7.9",
+          "name": "Post-Approval",
+          "configFile": "7-document-completion/7.9-post-approval.json",
+          "expanded": false
+        },
+        {
+          "id": "7.10",
+          "name": "Closed",
+          "configFile": "7-document-completion/7.10-closed.json",
+          "expanded": false
+        },
+        {
+          "id": "7.11",
+          "name": "Final PDF",
+          "configFile": "7-document-completion/7.11-final-pdf.json",
+          "expanded": false
+        },
+        {
+          "id": "7.12",
+          "name": "Re-Open",
+          "configFile": "7-document-completion/7.12-reopen.json",
+          "expanded": false
+        },
+        {
+          "id": "7.13",
+          "name": "Audit Log",
+          "configFile": "7-document-completion/7.13-audit-log.json",
+          "expanded": false
+        }
+      ]
+    }
+  ]
+}

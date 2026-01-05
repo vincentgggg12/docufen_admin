@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "databaseAccounts_docufen_staging_name": {
+      "value": "docufen-prod-cosmos-06231856"
+    },
+    "privateDnsZones_privatelink_documents_azure_com_name": {
+      "value": "privatelink.documents.azure.com"
+    },
+    "privateDnsZones_privatelink_vaultcore_azure_net_name": {
+      "value": "privatelink.vaultcore.azure.net"
+    },
+    "privateEndpoints_cosmosstagingendpoint_name": {
+      "value": "cosmos-06231856-ep"
+    },
+    "privateEndpoints_keyvaultstagingendpoint_name": {
+      "value": "keyvault-06231856-ep"
+    },
+    "registries_docufenstaging_name": {
+      "value": "docufenprod06231856"
+    },
+    "serverfarms_docufenAppServicePlanstaging_name": {
+      "value": "docufen-plan-06231856"
+    },
+    "sites_docufen_staging_name": {
+      "value": "docufen-app-06231856"
+    },
+    "staticSites_docufenapp_staging_name": {
+      "value": "docufenapp-06231856"
+    },
+    "storageAccounts_docufenstagingstorage_name": {
+      "value": "docufenstor06231856"
+    },
+    "systemTopics_docufenstagingstorage_f33197b9_a5d1_4f96_a661_7b8ffa72c06c_name": {
+      "value": "docufen-topic-06231856"
+    },
+    "vaults_docufen_staging_name": {
+      "value": "docufen-kv-06231856"
+    },
+    "virtualNetworks_vnet_staging_name": {
+      "value": "vnet-docufen-06231856"
+    },
+    "containerApps_docufen_admin_name": {
+      "value": "docufen-admin-06231856"
+    },
+    "managedEnvironments_name": {
+      "value": "docufen-env-06231856"
+    },
+    "workspaces_containerapp_name": {
+      "value": "docufen-logs-06231856"
+    },
+    "containerImage": {
+      "value": "ghcr.io/integritycodes/docufen_server:latest"
+    },
+    "containerPort": {
+      "value": 3000
+    },
+    "githubUsername": {
+      "value": ""
+    },
+    "githubToken": {
+      "value": ""
+    }
+  }
+}

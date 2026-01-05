@@ -1,0 +1,99 @@
+.selection-handler-card {
+  /* Removed nested card styling */
+}
+
+.buttons-row {
+  /* Using Tailwind classes instead */
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.button, .icon-button {
+  min-width: 48px;
+  height: 32px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 12px;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+}
+
+.button:hover, .icon-button:hover {
+  background-color: #f9fafb;
+}
+
+.button:focus, .icon-button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+}
+
+.button:disabled, .icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-button {
+  min-width: 32px;
+  padding: 0 8px;
+}
+
+.input-field {
+  height: 32px;
+  background-color: #ffffff;
+  border: 1px solid #a0a0a0;
+  border-radius: 4px;
+  padding: 0 8px;
+  flex-grow: 1;
+}
+
+.insert-button {
+  height: 32px;
+  min-width: 64px;
+  flex-grow: 0;
+  border-radius: 4px;
+  background-color: #e5e7eb;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+}
+
+.insert-button[data-primary="true"] {
+  background-color: #2563eb;
+  color: white;
+  border-color: #1d4ed8;
+}
+
+.insert-button[data-primary="true"]:hover {
+  background-color: #1d4ed8;
+}
+
+.button[data-green="true"] {
+  background-color: #16a34a;
+  color: white;
+}
+
+.button[data-green="true"]:hover {
+  background-color: #15803d;
+}
+
+.tooltip-content {
+  background-color: #18181b;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+}
+
+.tooltip-arrow {
+  fill: #18181b;
+}

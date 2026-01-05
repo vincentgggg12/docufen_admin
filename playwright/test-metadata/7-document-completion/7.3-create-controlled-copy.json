@@ -1,0 +1,6 @@
+{
+  "$schema": "../schema/test-config.schema.json",
+  "sectionId": "7.3",
+  "sectionName": "Create Controlled Copy",
+  "tests": []
+}

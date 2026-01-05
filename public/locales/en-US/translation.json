@@ -1,0 +1,84 @@
+{
+  "SyncMessageDialog": {
+    "changesNotAppliedDescription": "Your last edit could not be applied because someone else updated the document. It has now been refreshed to show the latest version.",
+    "changesNotAppliedTitle": "Your Changes Were Not Applied",
+    "documentUpdated": "Document Updated",
+    "documentUpdatedDescription": "This document has been updated by another user since you last modified it.",
+    "gotItButton": "Got it",
+    "reviewAndRetry": "Please review the updated document and try your edit again."
+  },
+  "addedEmptyTableRow": "Added an empty table row.",
+  "analysingContent": "Analyzing Content",
+  "billing": {
+    "allTime": "All Time",
+    "selectMonth": "View Month",
+    "title": "Billing and ROI"
+  },
+  "buttonTitle": {
+    "finaliseAsPdf": "Finalize as PDF",
+    "finaliseDraft": "Finalize Draft",
+    "toggleCellColour": "Toggle Cell Color"
+  },
+  "convertingDocument": "Converting document...",
+  "createDemoDoc": "Create Practice Document",
+  "createDemoDocument": "Create Practice Document",
+  "createDemoDocumentDescription": "This will create a practice document using the Docufen testing template with pre-filled information.",
+  "creating": "Creating",
+  "dateString": "{{ month }}-{{ day }}-{{ year }}",
+  "dateTimeString": "{{ month }}-{{ day }}-{{ year }} {{ hour }}:{{ minute }}:{{ seconds }}",
+  "demoDocumentDetails": "Practice Document Details",
+  "finalisingIsFinal": "Finalizing the document is irreversible. The Word document will no longer be editable and the PDF will replace it.",
+  "initialLock": "Initial document lock",
+  "localClockIncorrectContent": "Please ensure that the timezone on your computer is correctly set and please synchonize your clock with an internet time server. Time on this computer is currently: {{time}}",
+  "mPopup": {
+    "cursorValidation": {
+      "inSystemContent": "Cannot insert in the middle of system content (initials, dates, markers). Place cursor after the complete initials/date line.",
+      "inUserContent": "Cannot insert in the middle of existing user-entered text. Place cursor at the start of the text, at the end after the initials line, or in original document text.",
+      "invalidPosition": "Cannot insert at this position"
+    },
+    "notAuthorized": {
+      "notVerified1": "Your digital signature has not been verified"
+    },
+    "tableCellInsertion": {
+      "off": "OFF",
+      "offDescription": "Your text is added as a new paragraph",
+      "on": "ON",
+      "onDescription": "Your text appears exactly where you place the cursor",
+      "title": "Insert at cursor position:"
+    }
+  },
+  "nav": {
+    "billing": "Billing and ROI"
+  },
+  "processing": "Processing",
+  "processingDemoDocument": "Processing Practice Document",
+  "roleOptions": {
+    "approvedBy": "Approved By",
+    "approver": "Approver",
+    "author": "Author",
+    "authoriseRelease": "Qualified Person",
+    "performedBy": "Performed By",
+    "qualityApprover": "Quality Approver",
+    "reviewedBy": "Reviewed By",
+    "reviewer": "Reviewer",
+    "verifiedBy": "Verified By"
+  },
+  "tableCellInsertion": {
+    "ariaLabel": "Toggle cursor position insertion",
+    "description": "Allow users the option to insert text exactly where their cursor is placed, instead of appending entries in a new paragraph.",
+    "title": "Insert at Cursor Position",
+    "toggle": "Enable cursor position insertion",
+    "tooltip": {
+      "disabled": "When disabled: All entries automatically append as a new paragraph.",
+      "enabled": "When enabled: Users can toggle between two insertion modes:\n\n• Insert at cursor - Text appears exactly where the cursor is placed\n\n• Append - Text is added as a new paragraph"
+    }
+  },
+  "timeString": "{{ hour }}:{{ minute }}:{{ seconds }}",
+  "timestampedContent": "The content added during the execution stage is timestamped. Docufen has notarized all such entries within the document&apos;s Audit Log to ensure integrity and traceability.",
+  "toggleCellColourContent": "This function gives you the ability to manually control the background color of table cells in your Word document. Simply select any cell and click the button to toggle its colour between green and white as needed.",
+  "tt": {
+    "finaliseAsPdf": "Click to finalize the document with attachments in a signed pdf file. This action is irreversible.",
+    "finaliseDraft": "Finalize the document. This will lock the document and prevent further editing."
+  },
+  "zoom-options": "Zoom options"
+}

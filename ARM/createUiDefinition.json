@@ -1,0 +1,209 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "0.1.2-preview",
+  "parameters": {
+    "basics": [
+      {
+        "name": "applicationName",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Application name",
+        "defaultValue": "DocuEditor",
+        "toolTip": "Name of the DocuEditor managed application",
+        "constraints": {
+          "required": true,
+          "regex": "^[a-z0-9A-Z]{3,24}$",
+          "validationMessage": "Application name must be between 3 and 24 characters long, and can contain only letters and numbers."
+        },
+        "visible": true
+      },
+      {
+        "name": "applicationInfo",
+        "type": "Microsoft.Common.InfoBox",
+        "visible": true,
+        "options": {
+          "icon": "Info",
+          "text": "This managed application will deploy DocuEditor with the following application registration details: \nApplication ID: fede27dc-61d8-4720-9219-bd3134af5734\nTenant ID: 11e9b0fe-e7f6-48fa-b2ee-8f7150b6ebb4"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "name": "infrastructureConfig",
+        "label": "Infrastructure Configuration",
+        "subLabel": {
+          "preValidation": "Configure infrastructure resources",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Infrastructure Configuration",
+        "elements": [
+          {
+            "name": "storageSection",
+            "type": "Microsoft.Common.Section",
+            "label": "Storage Configuration",
+            "elements": [
+              {
+                "name": "storageAccountName",
+                "type": "Microsoft.Storage.MultiStorageAccountCombo",
+                "label": {
+                  "prefix": "DocuEditor storage name",
+                  "type": "Storage account type"
+                },
+                "toolTip": {
+                  "prefix": "Name for the DocuEditor storage account",
+                  "type": "Type of storage account for document processing"
+                },
+                "defaultValue": {
+                  "type": "Standard_LRS"
+                },
+                "constraints": {
+                  "allowedTypes": [
+                    "Standard_LRS",
+                    "Standard_GRS",
+                    "Standard_ZRS",
+                    "Premium_LRS"
+                  ]
+                },
+                "count": 1
+              }
+            ]
+          },
+          {
+            "name": "cosmosDbSection",
+            "type": "Microsoft.Common.Section",
+            "label": "Cosmos DB Configuration",
+            "elements": [
+              {
+                "name": "cosmosDbAccountName",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Cosmos DB Account Name",
+                "defaultValue": "",
+                "toolTip": "Name for the Cosmos DB account",
+                "constraints": {
+                  "required": true,
+                  "regex": "^[a-z0-9-]{3,44}$",
+                  "validationMessage": "Cosmos DB account name must be between 3 and 44 characters, contain only lowercase letters, numbers, and hyphens."
+                }
+              }
+            ]
+          },
+          {
+            "name": "appServiceSection",
+            "type": "Microsoft.Common.Section",
+            "label": "App Service Configuration",
+            "elements": [
+              {
+                "name": "appServicePlanTier",
+                "type": "Microsoft.Common.DropDown",
+                "label": "App Service Plan Tier",
+                "defaultValue": "P1v2",
+                "toolTip": "Select the App Service Plan tier",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Premium V2 (P1v2)",
+                      "value": "P1v2"
+                    },
+                    {
+                      "label": "Premium V2 (P2v2)",
+                      "value": "P2v2"
+                    },
+                    {
+                      "label": "Premium V2 (P3v2)",
+                      "value": "P3v2"
+                    }
+                  ],
+                  "required": true
+                },
+                "visible": true
+              },
+              {
+                "name": "appServicePlanInstances",
+                "type": "Microsoft.Common.Slider",
+                "label": "App Service Plan Instances",
+                "min": 1,
+                "max": 10,
+                "defaultValue": 1,
+                "showStepMarkers": true,
+                "toolTip": "Number of instances for the App Service Plan",
+                "constraints": {
+                  "required": true
+                },
+                "visible": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "identityConfig",
+        "label": "Identity Configuration",
+        "subLabel": {
+          "preValidation": "Configure identity settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Identity Settings",
+        "elements": [
+          {
+            "name": "docuEditorSettings",
+            "type": "Microsoft.Common.Section",
+            "label": "DocuEditor Settings",
+            "elements": [
+              {
+                "name": "tenantInput",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Tenant ID",
+                "defaultValue": "11e9b0fe-e7f6-48fa-b2ee-8f7150b6ebb4",
+                "toolTip": "Azure AD Tenant ID",
+                "constraints": {
+                  "required": true,
+                  "regex": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                  "validationMessage": "Please enter a valid Tenant ID in GUID format."
+                },
+                "visible": true
+              },
+              {
+                "name": "clientIdInput",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Client ID",
+                "defaultValue": "fede27dc-61d8-4720-9219-bd3134af5734",
+                "toolTip": "Application (client) ID from Azure AD app registration",
+                "constraints": {
+                  "required": true,
+                  "regex": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                  "validationMessage": "Please enter a valid Client ID in GUID format."
+                },
+                "visible": true
+              },
+              {
+                "name": "objectIdInput",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Object ID",
+                "defaultValue": "3ea55077-7319-47f3-9372-ba73d5aa1f15",
+                "toolTip": "Object ID from Azure AD app registration",
+                "constraints": {
+                  "required": true,
+                  "regex": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                  "validationMessage": "Please enter a valid Object ID in GUID format."
+                },
+                "visible": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "applicationName": "[basics('applicationName')]",
+      "location": "[location()]",
+      "storageAccountName": "[steps('infrastructureConfig').storageSection.storageAccountName.prefix]",
+      "storageAccountType": "[steps('infrastructureConfig').storageSection.storageAccountName.type]",
+      "cosmosDbAccountName": "[steps('infrastructureConfig').cosmosDbSection.cosmosDbAccountName]",
+      "appServicePlanTier": "[steps('infrastructureConfig').appServiceSection.appServicePlanTier]",
+      "appServicePlanInstances": "[steps('infrastructureConfig').appServiceSection.appServicePlanInstances]",
+      "tenantId": "[steps('identityConfig').docuEditorSettings.tenantInput]",
+      "clientId": "[steps('identityConfig').docuEditorSettings.clientIdInput]",
+      "objectId": "[steps('identityConfig').docuEditorSettings.objectIdInput]"
+    }
+  }
+} 

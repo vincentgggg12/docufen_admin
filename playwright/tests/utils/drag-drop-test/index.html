@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload - Drag and Drop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .upload-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            min-width: 400px;
+        }
+        
+        .upload-dialog.open {
+            display: block;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .overlay.open {
+            display: block;
+        }
+        
+        .drop-zone {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 50px;
+            text-align: center;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .drop-zone.drag-over {
+            border-color: #4CAF50;
+            background-color: #f0f8ff;
+            transform: scale(1.02);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: #ccc;
+            color: black;
+        }
+        
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .file-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Document Management System</h1>
+    
+    <button id="createDocBtn" class="btn btn-primary">Create Document</button>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="upload-dialog" id="uploadDialog">
+        <h2>Create Document</h2>
+        
+        <div class="drop-zone" id="dropZone">
+            <p>Drag and drop your .docx file here</p>
+            <p>or</p>
+            <input type="file" id="fileInput" accept=".docx" style="display: none;">
+            <button class="btn btn-secondary" onclick="document.getElementById('fileInput').click()">Choose File</button>
+        </div>
+        
+        <div class="error-message" id="errorMessage"></div>
+        
+        <div class="file-info" id="fileInfo">
+            <p><strong>Selected file:</strong> <span id="fileName"></span></p>
+            <p><strong>Size:</strong> <span id="fileSize"></span></p>
+        </div>
+        
+        <div style="margin-top: 20px; text-align: right;">
+            <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+            <button class="btn btn-primary" id="uploadBtn" disabled>Upload</button>
+        </div>
+    </div>
+    
+    <script>
+        const createDocBtn = document.getElementById('createDocBtn');
+        const uploadDialog = document.getElementById('uploadDialog');
+        const overlay = document.getElementById('overlay');
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const errorMessage = document.getElementById('errorMessage');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        
+        let selectedFile = null;
+        const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB
+        
+        // Open dialog
+        createDocBtn.addEventListener('click', () => {
+            uploadDialog.classList.add('open');
+            overlay.classList.add('open');
+        });
+        
+        // Close dialog
+        function closeDialog() {
+            uploadDialog.classList.remove('open');
+            overlay.classList.remove('open');
+            resetForm();
+        }
+        
+        cancelBtn.addEventListener('click', closeDialog);
+        overlay.addEventListener('click', closeDialog);
+        
+        // Reset form
+        function resetForm() {
+            selectedFile = null;
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+            fileInfo.style.display = 'none';
+            uploadBtn.disabled = true;
+            fileInput.value = '';
+            dropZone.classList.remove('drag-over');
+        }
+        
+        // Drag and drop events
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+        
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+        });
+        
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        
+        // File input change
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        
+        // Handle file
+        function handleFile(file) {
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+            
+            // Check file type
+            if (!file.name.endsWith('.docx')) {
+                showError('Only .docx files are supported');
+                return;
+            }
+            
+            // Check file size
+            if (file.size > MAX_FILE_SIZE) {
+                showError('File size exceeds 25MB limit');
+                return;
+            }
+            
+            // Check if file is corrupted (simplified check)
+            // In a real application, you would validate the file structure
+            if (file.size === 0) {
+                showError('File appears to be corrupted');
+                return;
+            }
+            
+            // File is valid
+            selectedFile = file;
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            fileInfo.style.display = 'block';
+            uploadBtn.disabled = false;
+        }
+        
+        // Show error
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            fileInfo.style.display = 'none';
+            uploadBtn.disabled = true;
+        }
+        
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Upload button click
+        uploadBtn.addEventListener('click', () => {
+            if

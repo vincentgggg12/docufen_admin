@@ -1,0 +1,195 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Import Roboto Mono font from Google Fonts (including thin 100 weight) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400&display=swap');
+
+
+/* Override Syncfusion control fonts to use Inter */
+.e-control, .e-control [class*='e-'], .e-control [class^='e-'] {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+}
+
+/* Override document editor specific fonts */
+.e-documenteditor-container * {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Additional style to ensure Inter is used in dialogs and other Syncfusion components */
+.e-popup, .e-dialog, .e-tooltip {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Style for timestamps and initials to use Roboto Mono Thin */
+.e-documenteditor-container .e-content [style*='Roboto Mono'] {
+  font-family: 'Roboto Mono', monospace !important;
+  font-weight: 100 !important; /* Thin weight */
+}
+
+/* Additional selectors to ensure Roboto Mono is properly applied in the document editor */
+.e-documenteditor-container .e-content span[style*='Roboto Mono'],
+.e-documenteditor-container .e-content p[style*='Roboto Mono'] {
+  font-family: 'Roboto Mono', monospace !important;
+  font-weight: 100 !important;
+}
+
+/* Hide the native Syncfusion comments panel but preserve functionality */
+.e-de-cmt-pane {
+  display: none !important;
+  width: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Hide the comments panel header area as well */
+.e-de-cmt-header, 
+.e-de-changes,
+.e-de-comments-toolbar,
+.e-de-comment-mark,
+.e-de-cmt-header-panel {
+  display: none !important;
+  width: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Hide the entire comments container and reset its space */
+.e-de-comments-panel {
+  display: none !important;
+  width: 0 !important;
+  max-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Override any Syncfusion dynamic styles */
+[class*="e-de-cmt"] {
+  display: none !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Ensure other Syncfusion UI elements aren't affected */
+.e-de-overlay {
+  right: 0 !important; 
+}
+
+/* Ensure the document editor takes full width without space for comments */
+.e-de-content-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-right: 0 !important;
+}
+
+/* Reset any Syncfusion padding/margin that might leave space for comments */
+.e-documenteditor {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Ensure document editor container has proper width */
+.e-documenteditor-container {
+  width: 100% !important;
+  background-color: #F5F2EE !important;
+}
+
+/* Set document editor page background */
+.e-de-content,
+.e-de-content-wrapper,
+.e-documenteditor,
+.e-de-content-container {
+  background-color: #F5F2EE !important;
+}
+
+/* Ensure the page itself keeps its white background */
+.e-document-content .e-de-page {
+  background-color: white !important;
+}
+
+/* Special class used during comment navigation - override all hiding */
+.temporarily-show-comments .e-de-cmt-pane,
+.temporarily-show-comments .e-de-cmt-header {
+  display: block !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Allow comment marks to be temporarily visible for navigation */
+.temporarily-show-comments .e-de-comment-mark {
+  display: inline !important; 
+  visibility: visible !important;
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+}
+
+/* Make sure no space is reserved for comment panel with mini sidebar */
+.e-de-content {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Remove any margin or space that Syncfusion might add for comments */
+body .e-documenteditor-container .e-document-content {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Force the document editor to ignore any comments panel in layout calculations */
+.e-document-border .e-de-cnt-mobilediv,
+.e-document-border .e-de-ctn-mobilediv {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Custom blinking cursor for document execution */
+.e-de-blink-cursor {
+  border-left: 2px solid #000 !important; /* Make cursor more visible */
+  animation: blink-animation 1s step-end infinite !important;
+}
+
+@keyframes blink-animation {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Temporary highlight for bookmarked content when navigating from chat */
+@keyframes bookmark-highlight {
+  0% {
+    background-color: transparent;
+  }
+  20% {
+    background-color: #fef3c7;
+  }
+  80% {
+    background-color: #fef3c7;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Apply highlight animation to selected text when bookmark is active */
+.bookmark-highlight-active .e-de-selected-text {
+  animation: bookmark-highlight 3s ease-in-out;
+}
+
+/* Alternative: Highlight the entire selection area */
+.bookmark-highlight-active .e-de-selection-highlight {
+  background-color: #fef3c7 !important;
+  animation: bookmark-highlight 3s ease-in-out;
+} 

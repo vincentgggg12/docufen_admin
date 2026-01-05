@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Test Hierarchy Schema",
+  "description": "Schema for test hierarchy configuration",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Report title"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/section"
+      }
+    }
+  },
+  "required": ["title", "sections"],
+  "definitions": {
+    "section": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^\\d+$",
+          "description": "Section identifier (e.g., '1', '2', '6')"
+        },
+        "name": {
+          "type": "string",
+          "description": "Section display name"
+        },
+        "expanded": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether section is expanded by default"
+        },
+        "subsections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/subsection"
+          }
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "subsection": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+$",
+          "description": "Subsection identifier (e.g., '6.1', '6.2')"
+        },
+        "name": {
+          "type": "string",
+          "description": "Subsection display name"
+        },
+        "configFile": {
+          "type": "string",
+          "description": "Path to the configuration file for this subsection"
+        },
+        "expanded": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether subsection is expanded by default"
+        }
+      },
+      "required": ["id", "name", "configFile"]
+    }
+  }
+}

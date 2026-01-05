@@ -1,0 +1,23 @@
+/* CSS for backend server */
+* {
+  font-family:'Calibri', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+div {
+  margin: 10px;
+  padding: 10px;
+}
+table {
+  border-collapse: collapse;
+  border: 1px solid #333333;
+}
+
+th {
+  background-color: #ddd;
+  padding: 10px 5px;
+  border: 1px solid #333333;
+}
+
+td {
+  padding: 10px 5px;
+  border: 1px solid #333333;
+}

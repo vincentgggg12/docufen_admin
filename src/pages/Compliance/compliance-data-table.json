@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "header": "Good Manufacturing Practices (GMP)",
+    "type": "Deviation",
+    "status": "Open",
+    "target": "100%",
+    "limit": "95%",
+    "reviewer": "Eddie Lake",
+    "exceptionNumber": "DV-8924",
+    "createdOn": "2023-11-15T09:30:00",
+    "owner": "Sarah Johnson"
+  },
+  {
+    "id": 2,
+    "header": "Standard Operating Procedures (SOPs)",
+    "type": "Deviation",
+    "status": "Closed",
+    "target": "90%",
+    "limit": "80%",
+    "reviewer": "Jamik Tashpulatov",
+    "exceptionNumber": "DV-5631",
+    "createdOn": "2023-10-22T14:45:00",
+    "owner": "Michael Chen"
+  },
+  {
+    "id": 3,
+    "header": "Quality Control Metrics",
+    "type": "Non-Conformance",
+    "status": "Open",
+    "target": "95%",
+    "limit": "90%",
+    "reviewer": "Eddie Lake",
+    "exceptionNumber": "NC-3452",
+    "createdOn": "2024-01-08T11:20:00",
+    "owner": "David Rodriguez"
+  },
+  {
+    "id": 4,
+    "header": "Risk Management Framework",
+    "type": "Non-Conformance",
+    "status": "Open",
+    "target": "85%",
+    "limit": "75%",
+    "reviewer": "Assign reviewer",
+    "exceptionNumber": "NC-7891",
+    "createdOn": "2024-02-29T16:10:00",
+    "owner": "Emma Wilson"
+  },
+  {
+    "id": 5,
+    "header": "Compliance Training Records",
+    "type": "Deviation",
+    "status": "Closed",
+    "target": "100%",
+    "limit": "90%",
+    "reviewer": "Assign reviewer",
+    "exceptionNumber": "DV-4267",
+    "createdOn": "2023-12-05T08:15:00",
+    "owner": "Alex Kumar"
+  }
+]

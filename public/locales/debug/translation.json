@@ -1,0 +1,42 @@
+{
+  "SyncMessageDialog": {
+    "changesNotAppliedDescription": "Your last edit could not be applied because someone else updated the document. It has now been refreshed to show the latest version.",
+    "changesNotAppliedTitle": "Your Changes Were Not Applied",
+    "documentUpdated": "Document Updated",
+    "documentUpdatedDescription": "This document has been updated by another user since you last modified it.",
+    "gotItButton": "Got it",
+    "reviewAndRetry": "Please review the updated document and try your edit again."
+  },
+  "billing": {
+    "allTime": "Debug allTime",
+    "selectMonth": "Debug selectMonth"
+  },
+  "convertingDocument": "convertingDocument",
+  "createDemoDoc": "createDemoDoc",
+  "createDemoDocument": "createDemoDocument",
+  "createDemoDocumentDescription": "createDemoDocumentDescription",
+  "creating": "creating",
+  "demoDocumentDetails": "demoDocumentDetails",
+  "mPopup": {
+    "tableCellInsertion": {
+      "off": "🔍 OFF",
+      "offDescription": "🔍 Your text is added as a new paragraph",
+      "on": "🔍 ON",
+      "onDescription": "🔍 Your text appears exactly where you place the cursor",
+      "title": "🔍 Insert at cursor position:"
+    }
+  },
+  "processing": "processing",
+  "processingDemoDocument": "processingDemoDocument",
+  "tableCellInsertion": {
+    "ariaLabel": "[[Toggle cursor position insertion]]",
+    "description": "[[Allow users the option to insert text exactly where their cursor is placed, instead of appending entries in a new paragraph.]]",
+    "title": "[[Insert at Cursor Position]]",
+    "toggle": "[[Enable cursor position insertion]]",
+    "tooltip": {
+      "disabled": "[[When disabled: All entries automatically append as a new paragraph.]]",
+      "enabled": "[[When enabled: Users can toggle between two insertion modes:\n\n• Insert at cursor - Text appears exactly where the cursor is placed\n\n• Append - Text is added as a new paragraph]]"
+    }
+  },
+  "zoom-options": "Zoom options"
+}

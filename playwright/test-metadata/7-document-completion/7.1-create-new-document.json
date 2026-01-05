@@ -1,0 +1,395 @@
+{
+  "$schema": "../schema/test-config.schema.json",
+  "sectionId": "7.1",
+  "sectionName": "Create New Document",
+  "tests": [
+    {
+      "testId": "TS.7.1-01",
+      "testName": "Create Document Dialog Display",
+      "description": "Verify that the Create Document dialog opens correctly with all required fields",
+      "prerequisites": {
+        "role": "User Manager",
+        "state": ["Logged in", "On Documents page"]
+      },
+      "steps": [
+        {
+          "stepNumber": "01",
+          "procedure": "With a User Manager role, navigate to Documents page. (SC)",
+          "expectedResult": "Documents page loads.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "navigate to Documents page",
+            "With a User Manager role, navigate to Documents page"
+          ]
+        },
+        {
+          "stepNumber": "02", 
+          "procedure": "Click \"Create New Document\" button.",
+          "expectedResult": "\"Create New Document\" button is visible.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Click \"Create New Document\" button",
+            "Click.*Create New Document.*button"
+          ]
+        },
+        {
+          "stepNumber": "03",
+          "procedure": "Verify dialog appears. (SC)",
+          "expectedResult": "Dialog window opens with document name field, external reference field, category dropdown, and file upload area",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Verify dialog appears",
+            "Verify.*dialog.*appears"
+          ]
+        }
+      ]
+    },
+    {
+      "testId": "TS.7.1-02",
+      "testName": "Document Name Validation",
+      "description": "Verify that the document name field is required for creating a document",
+      "prerequisites": {
+        "role": "User Manager",
+        "state": ["Logged in"]
+      },
+      "steps": [
+        {
+          "stepNumber": "01",
+          "procedure": "With a User Manager role open create document dialog.",
+          "expectedResult": "Create document dialog opens.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "open create document dialog",
+            "With a User Manager role open create document dialog"
+          ]
+        },
+        {
+          "stepNumber": "02",
+          "procedure": "Leave document name field empty.",
+          "expectedResult": "Name field is left blank.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Leave document name field empty",
+            "Leave.*document name.*empty"
+          ]
+        },
+        {
+          "stepNumber": "03",
+          "procedure": "Upload a .docx file.",
+          "expectedResult": "A .docx file is uploaded.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Upload a .docx file",
+            "Upload.*docx.*file"
+          ]
+        },
+        {
+          "stepNumber": "04",
+          "procedure": "Verify 'Create Document button' is disabled. (SC)",
+          "expectedResult": "Create Document button is disabled.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Verify 'Create Document button' is disabled",
+            "Verify.*Create Document.*disabled"
+          ]
+        },
+        {
+          "stepNumber": "05",
+          "procedure": "Enter valid document name.",
+          "expectedResult": "'Test Document' is entered as document name.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Enter valid document name",
+            "Enter.*document name"
+          ]
+        },
+        {
+          "stepNumber": "06",
+          "procedure": "Verify 'Create Document' button is enabled. (SC)",
+          "expectedResult": "'Create Document' button is enabled until a docx file is uploaded and the 'Document Name' has been filled.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Verify 'Create Document' button is enabled",
+            "Verify.*Create Document.*enabled"
+          ]
+        }
+      ]
+    },
+    {
+      "testId": "TS.7.1-03",
+      "testName": "External Reference Field",
+      "description": "Verify that the external reference field accepts text input, can be cleared, and the form can be submitted without it",
+      "prerequisites": {
+        "role": "User Manager",
+        "state": ["Logged in", "On Documents page"]
+      },
+      "steps": [
+        {
+          "stepNumber": "01",
+          "procedure": "Open create document dialog.",
+          "expectedResult": "Create Document dialog opens.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Open create document dialog"
+          ]
+        },
+        {
+          "stepNumber": "02",
+          "procedure": "Enter text in external reference field. (SC)",
+          "expectedResult": "Field accepts text input.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Enter text in external reference field"
+          ]
+        },
+        {
+          "stepNumber": "03",
+          "procedure": "Clear the field. (SC)",
+          "expectedResult": "No validation error when left empty.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Clear the field"
+          ]
+        },
+        {
+          "stepNumber": "04",
+          "procedure": "Submit form without external reference. (SC)",
+          "expectedResult": "Form submits successfully without external reference",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Submit form without external reference"
+          ]
+        }
+      ]
+    },
+    {
+      "testId": "TS.7.1-04",
+      "testName": "Category Dropdown Selection",
+      "description": "Verify that the Category dropdown shows predefined categories and allows selection",
+      "prerequisites": {
+        "role": "User Manager",
+        "state": ["Logged in", "On Documents page"]
+      },
+      "steps": [
+        {
+          "stepNumber": "01",
+          "procedure": "Open create document dialog.",
+          "expectedResult": "Create Document dialog opens.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Open create document dialog"
+          ]
+        },
+        {
+          "stepNumber": "02",
+          "procedure": "Click category dropdown.",
+          "expectedResult": "Dropdown opens.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Click category dropdown"
+          ]
+        },
+        {
+          "stepNumber": "03",
+          "procedure": "Verify predefined options appear. (SC)",
+          "expectedResult": "Dropdown shows predefined categories. 'Other' option is available.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Verify predefined options appear"
+          ]
+        },
+        {
+          "stepNumber": "04",
+          "procedure": "Select option 1 (SC), select option 2 (SC), select option 3 (SC).",
+          "expectedResult": "Selected options displays in field.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Select option 1",
+            "select option 2",
+            "select option 3"
+          ]
+        }
+      ]
+    },
+    {
+      "testId": "TS.7.1-05",
+      "testName": "Custom Category Input",
+      "description": "Verify that custom category input field appears when 'Other' is selected from the category dropdown",
+      "prerequisites": {
+        "role": "User Manager",
+        "state": ["Logged in", "On Documents page"]
+      },
+      "steps": [
+        {
+          "stepNumber": "01",
+          "procedure": "Open create document dialog.",
+          "expectedResult": "Create document dialog opens.",
+          "requiresScreenshot": false,
+          "extractionPatterns": ["open create document dialog"]
+        },
+        {
+          "stepNumber": "02",
+          "procedure": "Select \"Other\" from category dropdown.",
+          "expectedResult": "Dropdown shows custom category option.",
+          "requiresScreenshot": false,
+          "extractionPatterns": ["select Other from category dropdown"]
+        },
+        {
+          "stepNumber": "03",
+          "procedure": "Verify custom input field appears. (SC)",
+          "expectedResult": "Custom category input field appears when \"Other\" selected.",
+          "requiresScreenshot": true,
+          "extractionPatterns": ["verify custom input field appears"]
+        },
+        {
+          "stepNumber": "04",
+          "procedure": "Enter custom category text. (SC)",
+          "expectedResult": "Field accepts text input. Custom text is used as category.",
+          "requiresScreenshot": true,
+          "extractionPatterns": ["enter custom category text"]
+        }
+      ]
+    },
+    {
+      "testId": "TS.7.1-06",
+      "testName": "File Browse and Format Validation",
+      "description": "Verify that only .docx files are accepted and non-.docx files show appropriate error message",
+      "prerequisites": {
+        "role": "User Manager",
+        "state": ["Logged in", "On Documents page"]
+      },
+      "steps": [
+        {
+          "stepNumber": "01",
+          "procedure": "Open create document dialog.",
+          "expectedResult": "Create document dialog opens.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Open create document dialog"
+          ]
+        },
+        {
+          "stepNumber": "02",
+          "procedure": "Click \"Browse\" or upload button.",
+          "expectedResult": "OS file browser opens.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Click \"Browse\" or upload button",
+            "Click.*upload.*button"
+          ]
+        },
+        {
+          "stepNumber": "03",
+          "procedure": "Select non-.docx file. (SC)",
+          "expectedResult": "Non-.docx file shows error \"Only .docx files are supported\".",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Select non-.docx file",
+            "Select.*non.*docx.*file"
+          ]
+        },
+        {
+          "stepNumber": "04",
+          "procedure": "Select .docx file. (SC)",
+          "expectedResult": ".docx file is accepted.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Select .docx file",
+            "Select.*docx.*file"
+          ]
+        }
+      ]
+    },
+    {
+      "testId": "TS.7.1-07",
+      "testName": "Drag and Drop File Upload",
+      "description": "Verify that drag and drop functionality works for file upload and validates file types",
+      "prerequisites": {
+        "role": "User Manager",
+        "state": ["Logged in", "On Documents page"]
+      },
+      "steps": [
+        {
+          "stepNumber": "01",
+          "procedure": "Open create document dialog.",
+          "expectedResult": "Create document dialog opens.",
+          "requiresScreenshot": false,
+          "extractionPatterns": [
+            "Open create document dialog"
+          ]
+        },
+        {
+          "stepNumber": "02",
+          "procedure": "Drag non-.docx file to drop zone. (SC)",
+          "expectedResult": "Drop zone highlights on drag over.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Drag non-.docx file to drop zone",
+            "Drag.*non.*docx.*file.*drop zone"
+          ]
+        },
+        {
+          "stepNumber": "03",
+          "procedure": "Drop file. (SC)",
+          "expectedResult": "Non-.docx file is not accepted.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Drop file"
+          ]
+        },
+        {
+          "stepNumber": "04",
+          "procedure": "Try with .docx file (SC)",
+          "expectedResult": ".docx file is accepted.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Try with .docx file",
+            "Try.*with.*docx.*file"
+          ]
+        }
+      ]
+    },
+    {
+      "testId": "TS.7.1-08",
+      "testName": "File Type and Size Validation",
+      "description": "Verify that file type validation and size limits are properly enforced",
+      "prerequisites": {
+        "role": "User Manager",
+        "state": ["Logged in", "On Documents page"]
+      },
+      "steps": [
+        {
+          "stepNumber": "01",
+          "procedure": "Try uploading: .doc (SC), .pdf (SC), .xlsx files (SC)",
+          "expectedResult": "Each non-.docx file shows \"Only .docx files are supported\".",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Try uploading: .doc",
+            "pdf",
+            "xlsx files"
+          ]
+        },
+        {
+          "stepNumber": "02",
+          "procedure": "Try uploading file > 25MB. (SC)",
+          "expectedResult": "Large file shows size error.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Try uploading file > 25MB",
+            "Try.*uploading.*file.*25MB"
+          ]
+        },
+        {
+          "stepNumber": "03",
+          "procedure": "Try uploading corrupted .docx (SC)",
+          "expectedResult": "Corrupted file shows appropriate error.",
+          "requiresScreenshot": true,
+          "extractionPatterns": [
+            "Try uploading corrupted .docx",
+            "Try.*uploading.*corrupted.*docx"
+          ]
+        }
+      ]
+    }
+  ]
+}

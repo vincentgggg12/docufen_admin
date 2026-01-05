@@ -1,0 +1,2 @@
+#!/bin/bash
+npx playwright test playwright/tests/6_DocumentCompletion/6.1.CreateNewDocument/TS.6.1-01-CreateDocumentDialogDisplay.spec.ts playwright/tests/6_DocumentCompletion/6.1.CreateNewDocument/TS.6.1-02-DocumentNameInputValidation.spec.ts --reporter=./playwright/reporter/custom-html-reporter.ts

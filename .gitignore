@@ -1,0 +1,35 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+docs
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.zip
+*.env
+playwright/report/*
+playwright/results/*
+playwright/test-results/*
+playwright/playwright-results/*
+# Root playwright-results (should not exist)
+/playwright-results/
+playwright/configs/playwright/
+run_assignRoles.sh
